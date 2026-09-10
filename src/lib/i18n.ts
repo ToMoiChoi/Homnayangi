@@ -4,17 +4,17 @@ export type Language = 'vi' | 'en';
 
 export const copy = {
   vi: {
-    tiers: ['QUỐC DÂN', 'HIẾM', 'CỰC PHẨM', 'TỐI MẬT', '★ ĐẶC BIỆT'],
-    title: 'Mở hòm ăn trưa', counterPrefix: 'Đã ghi nhận', counterSuffix: 'hòm',
-    counterTitle: 'Lượt quay hoàn tất được ghi nhận trên website này', caseLabel: 'Mở hòm món ăn',
+    tiers: ['🌸 Món quen thuộc', '🍓 Món ngon lành', '🍰 Món hết sẩy', '👑 Món tự thưởng', '✨ Món thần thánh'],
+    title: 'Hôm nay ăn gì nhỉ cậu ơi? ✨', counterPrefix: 'Đã bốc thăm', counterSuffix: 'lần',
+    counterTitle: 'Lượt bốc thăm món ăn ghi nhận trên trình duyệt này nè', caseLabel: 'Hộp quà ẩm thực',
     soundOn: 'Âm thanh bật', soundOff: 'Âm thanh tắt', turnSoundOff: 'Tắt âm thanh', turnSoundOn: 'Bật âm thanh',
     github: 'Mở mã nguồn trên GitHub', starsPending: 'chưa tải', language: 'Switch to English',
-    spend: 'Mức chi thường ngày', custom: 'Tuỳ chỉnh', customSpend: 'Mức chi tuỳ chỉnh (nghìn đồng)',
-    thousandPerMeal: 'nghìn / bữa', spendError: 'Nhập từ 30 đến 180 nghìn.', vegetarianPool: 'Pool hiện tại: trung bình',
-    vegetarianOnly: 'Chỉ ăn chay', vegetarian: 'Ăn chay', opening: 'ĐANG MỞ HÒM…', openAgain: 'MỞ LẠI', open: 'MỞ HÒM',
-    newItem: 'VẬT PHẨM MỚI', referencePrice: 'Giá tham khảo', perPerson: '/ người', find: 'TÌM QUÁN', continue: 'TIẾP TỤC', nearby: 'gần đây',
-    whatsInside: 'TRONG HÒM CÓ GÌ?', items: 'Vật phẩm trong hòm', mystery: '★ MÓN BÍ ẨN', mysteryAlt: 'Món bí ẩn hạng vàng',
-    footer: 'Fan-made · SFX: Valve /', lunchDish: 'Món ăn trưa', vegetarianDish: 'Chay',
+    spend: 'Ngân sách bữa trưa nè', custom: 'Tuỳ chỉnh', customSpend: 'Mức chi tuỳ chỉnh (nghìn đồng)',
+    thousandPerMeal: 'nghìn / bữa', spendError: 'Nhập từ 30 đến 180 nghìn nè.', vegetarianPool: 'Thực đơn chay: trung bình',
+    vegetarianOnly: 'Chỉ ăn chay', vegetarian: 'Ăn chay thanh tịnh 🌿', opening: 'ĐANG CHỌN MÓN NGON… 🌸', openAgain: 'BỐC LẠI NÈ ✨', open: 'HÔM NAY ĂN GÌ TA? 💖',
+    newItem: 'VŨ TRỤ GỢI Ý CHO CẬU NÈ 🥰', referencePrice: 'Giá tầm khoảng', perPerson: '/ người', find: 'TÌM QUÁN GẦN ĐÂY 🌸', continue: 'DẠ XONG RỒI 💖', nearby: 'gần đây',
+    whatsInside: 'MENU HÔM NAY CÓ GÌ NHỈ? ✨', items: 'Gợi ý món ngon', mystery: '★ MÓN BÍ MẬT', mysteryAlt: 'Món bí mật siêu đặc biệt',
+    footer: 'Fan-made · SFX: Valve /', lunchDish: 'Món ăn trưa', vegetarianDish: 'Đồ chay',
   },
   en: {
     tiers: ['MIL-SPEC', 'RESTRICTED', 'CLASSIFIED', 'COVERT', '★ SPECIAL ITEM'],
