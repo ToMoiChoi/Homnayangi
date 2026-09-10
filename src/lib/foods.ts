@@ -1,5 +1,5 @@
 import { priceRarity } from './case-mechanics';
-export type Food={customId?:string;name:string;sub:string;price:number;rarity:number;image:number;veg?:boolean;quip:string};
+export type Food={customId?:string;name:string;sub:string;price:number;rarity:number;image:number;imageUrl?:string;veg?:boolean;quip:string};
 // Approximate lunch portion prices in thousands of VND, not restaurant quotes.
 export const foods:Food[]=[
   {
@@ -974,5 +974,140 @@ export const foods:Food[]=[
   "sub": "Thịt & rau • Việt Nam",
   "quip": "Miến này không phải miếng mồi deadline.",
   "image": 131
+},
+{
+  "name": "Mì Samyang",
+  "price": 35,
+  "sub": "Mì cay Samyang chay • Hàn Quốc",
+  "quip": "Cay xé lưỡi nhưng chay thanh tịnh.",
+  "image": 132,
+  "imageUrl": "/foods/mi-samyang.jpg",
+  "veg": true
+},
+{
+  "name": "Mì cay nước",
+  "price": 45,
+  "sub": "Mì cay nước cấp độ chay • Hàn Quốc",
+  "quip": "Cấp độ 7 thách thức vị giác.",
+  "image": 133,
+  "imageUrl": "/foods/mi-cay-nuoc.jpg",
+  "veg": true
+},
+{
+  "name": "Mì cay khô",
+  "price": 45,
+  "sub": "Mì cay khô trộn nấm chay • Hàn Quốc",
+  "quip": "Sốt đậm đà, sợi mì dai giòn.",
+  "image": 134,
+  "imageUrl": "/foods/mi-cay-kho.jpg",
+  "veg": true
+},
+{
+  "name": "Mì Samyang phô mai",
+  "price": 40,
+  "sub": "Samyang Cheese béo ngậy chay • Hàn Quốc",
+  "quip": "Cay tê đầu lưỡi, ngập tràn phô mai.",
+  "image": 135,
+  "imageUrl": "/foods/samyang-cheese.jpg",
+  "veg": true
+},
+{
+  "name": "Samyang Carbonara",
+  "price": 42,
+  "sub": "Samyang hồng sốt kem Carbonara chay",
+  "quip": "Màu hồng đáng yêu, vị cay quyến rũ.",
+  "image": 136,
+  "imageUrl": "/foods/samyang-carbonara.jpg",
+  "veg": true
+},
+{
+  "name": "Samyang X2",
+  "price": 40,
+  "sub": "Samyang siêu cay 2X Spicy chay",
+  "quip": "Cay nhân đôi, năng lượng bùng nổ.",
+  "image": 137,
+  "imageUrl": "/foods/samyang-2x.jpg",
+  "veg": true
+},
+{
+  "name": "Cơm tấm",
+  "price": 35,
+  "sub": "Sườn non chay & chả nấm • Việt Nam",
+  "quip": "Cơm tấm chay thơm lừng nức mũi.",
+  "image": 138,
+  "imageUrl": "/foods/com-tam.jpg",
+  "veg": true
+},
+{
+  "name": "Bún chả giò",
+  "price": 35,
+  "sub": "Chả giò nấm giòn rụm • Việt Nam",
+  "quip": "Giòn tan từng miếng, ngập tràn rau xanh.",
+  "image": 139,
+  "imageUrl": "/foods/bun-cha-gio.jpg",
+  "veg": true
+},
+{
+  "name": "Bún chả",
+  "price": 40,
+  "sub": "Chả nướng nấm đậu hũ chay • Hà Nội",
+  "quip": "Đậm đà hương vị thủ đô thanh tịnh.",
+  "image": 140,
+  "imageUrl": "/foods/bun-cha.jpg",
+  "veg": true
+},
+{
+  "name": "Bún đậu",
+  "price": 40,
+  "sub": "Đậu mơ rán giòn, chả cốm chay",
+  "quip": "Đậu mơ béo ngậy, chả cốm thơm giòn.",
+  "image": 141,
+  "imageUrl": "/foods/bun-dau.jpg",
+  "veg": true
+},
+{
+  "name": "Eat clean dish",
+  "price": 55,
+  "sub": "Salad quinoa đậu củ quả • Healthy",
+  "quip": "Healthy cho dáng xinh, bụng nhẹ.",
+  "image": 142,
+  "imageUrl": "/foods/eat-clean.jpg",
+  "veg": true
+},
+{
+  "name": "Cơm kim chi",
+  "price": 40,
+  "sub": "Cơm chiên kim chi rong biển chay",
+  "quip": "Chua cay giòn rụm chuẩn vị Hàn.",
+  "image": 143,
+  "imageUrl": "/foods/com-kim-chi.jpg",
+  "veg": true
+},
+{
+  "name": "Cơm trộn HQ",
+  "price": 50,
+  "sub": "Bibimbap rau nấm chay • Hàn Quốc",
+  "quip": "Trộn đều tay, vận may sẽ tới.",
+  "image": 144,
+  "imageUrl": "/foods/com-tron-hq.jpg",
+  "veg": true
+},
+{
+  "name": "Miến xào HQ",
+  "price": 45,
+  "sub": "Japchae miến dong xào mè rang chay",
+  "quip": "Sợi miến bóng bẩy, thơm lừng dầu mè.",
+  "image": 145,
+  "imageUrl": "/foods/mien-xao-hq.jpg",
+  "veg": true
+},
+{
+  "name": "Miến trộn",
+  "price": 38,
+  "sub": "Miến trộn nấm & đậu hũ chua ngọt",
+  "quip": "Thanh mát trưa hè, nhẹ bụng ngon miệng.",
+  "image": 146,
+  "imageUrl": "/foods/mien-tron.jpg",
+  "veg": true
 }
 ].map(food=>({...food,rarity:priceRarity(food.price)}));
