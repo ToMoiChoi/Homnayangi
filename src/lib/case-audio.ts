@@ -71,23 +71,87 @@ export class CaseAudio {
    for (const name of names) void this.decode(name).catch(() => {});
   } catch { /* Audio availability never blocks the roulette. Next gesture retries. */ }
  }
- play(name: CaseSound) {
-  if (this.disposed || this.muted || document.hidden || !this.context) return;
-  const buffer = this.buffers.get(name);
-  if (!buffer) {
-   // Drop stale ticks. Opening/reveal sounds may wait briefly for their first decode.
-   if (name !== 'csgo_ui_crate_item_scroll') {
-    const generation = this.generation, deadline = performance.now() + 1200;
-    void this.decode(name).then(() => { if (generation === this.generation && performance.now() < deadline) this.play(name); }).catch(() => {});
+  private tickCounter = 0;
+
+  playModernSfx(name: CaseSound) {
+   if (this.disposed || this.muted || document.hidden || !this.context) return;
+   if (this.context.state !== 'running') return;
+   const ctx = this.context;
+   const now = ctx.currentTime;
+   const master = this.gain ?? ctx.destination;
+
+   if (name === 'csgo_ui_crate_item_scroll') {
+    this.tickCounter = (this.tickCounter + 1) % 4;
+    const clickPitches = [520, 580, 640, 580];
+    const freq = clickPitches[this.tickCounter];
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(freq, now);
+    osc.frequency.exponentialRampToValueAtTime(freq * 0.4, now + 0.028);
+
+    gain.gain.setValueAtTime(0.18, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.032);
+
+    osc.connect(gain);
+    gain.connect(master);
+    osc.start(now);
+    osc.stop(now + 0.035);
+    return;
    }
-   return;
+
+   if (name === 'csgo_ui_crate_open') {
+    const sweepNotes = [440, 554.37, 659.25, 880];
+    sweepNotes.forEach((freq, idx) => {
+     const start = now + idx * 0.05;
+     const osc = ctx.createOscillator();
+     const gain = ctx.createGain();
+     osc.type = 'sine';
+     osc.frequency.setValueAtTime(freq, start);
+
+     gain.gain.setValueAtTime(0.001, start);
+     gain.gain.linearRampToValueAtTime(0.18, start + 0.01);
+     gain.gain.exponentialRampToValueAtTime(0.001, start + 0.28);
+
+     osc.connect(gain);
+     gain.connect(master);
+     osc.start(start);
+     osc.stop(start + 0.3);
+    });
+    return;
+   }
+
+   const revealChords: Record<string, number[]> = {
+    item_reveal3_rare: [440, 554.37, 659.25, 880],
+    item_reveal4_mythical: [523.25, 659.25, 783.99, 1046.5],
+    item_reveal5_legendary: [587.33, 739.99, 880, 1174.66],
+    item_reveal6_ancient: [523.25, 659.25, 783.99, 1046.5, 1318.51],
+   };
+   const chord = revealChords[name] || revealChords.item_reveal3_rare;
+
+   chord.forEach((freq, idx) => {
+    const start = now + idx * 0.06;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, start);
+
+    gain.gain.setValueAtTime(0.001, start);
+    gain.gain.linearRampToValueAtTime(0.22, start + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, start + 0.6);
+
+    osc.connect(gain);
+    gain.connect(master);
+    osc.start(start);
+    osc.stop(start + 0.65);
+   });
   }
-  if (this.context.state !== 'running') return;
-  const source = this.context.createBufferSource(); source.buffer = buffer; source.connect(this.gain!);
-  this.sources.add(source);
-  source.onended = () => { source.disconnect(); this.sources.delete(source); };
-  source.start();
- }
+
+  play(name: CaseSound) {
+   if (this.disposed || this.muted || document.hidden || !this.context) return;
+   this.playModernSfx(name);
+  }
  setMuted(muted: boolean) {
   this.muted = muted;
   if (this.gain) this.gain.gain.value = muted ? 0 : .65;
